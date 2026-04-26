@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flowa — Build Habits That Stick</title>
+  <meta name="description" content="Flowa helps you build lasting habits with streaks, a focus timer, and AI coaching. Available on Android.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0D0D15;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    a { color: #9B9FE8; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      position: sticky;
+      top: 0;
+      background: rgba(13,13,21,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      z-index: 100;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #fff;
+      text-decoration: none;
+    }
+    .nav-logo span {
+      width: 36px;
+      height: 36px;
+      background: #5B5FC7;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+    }
+    .nav-links a { color: rgba(255,255,255,0.6); }
+    .nav-links a:hover { color: #fff; text-decoration: none; }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 100px 24px 80px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(91,95,199,0.18);
+      border: 1px solid rgba(91,95,199,0.4);
+      color: #9B9FE8;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 28px;
+      letter-spacing: 0.3px;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: #5B5FC7; }
+    .hero p {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.55);
+      max-width: 520px;
+      margin: 0 auto 40px;
+    }
+    .cta-row {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #5B5FC7;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 14px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: #4a4eb5; text-decoration: none; }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.8);
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 14px;
+      text-decoration: none;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); text-decoration: none; }
+
+    /* PHONE PREVIEW */
+    .preview {
+      display: flex;
+      justify-content: center;
+      padding: 20px 24px 80px;
+      gap: 20px;
+    }
+    .phone-wrap {
+      width: 180px;
+      height: 360px;
+      background: #161623;
+      border-radius: 32px;
+      border: 2px solid rgba(255,255,255,0.1);
+      overflow: hidden;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.7), 0 0 0 1px rgba(91,95,199,0.2);
+      flex-shrink: 0;
+    }
+    .phone-wrap.center {
+      transform: translateY(-20px);
+      width: 200px;
+      height: 400px;
+    }
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+    .phone-screen-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(160deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.2);
+      font-size: 0.75rem;
+    }
+
+    /* FEATURES */
+    .features {
+      background: #111119;
+      padding: 80px 24px;
+    }
+    .section-label {
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #5B5FC7;
+      margin-bottom: 14px;
+    }
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 56px;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .feature-card {
+      background: #161623;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 28px 24px;
+    }
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 14px;
+    }
+    .feature-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .feature-card p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.5;
+    }
+
+    /* SOCIAL PROOF */
+    .proof {
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: #5B5FC7;
+      letter-spacing: -1px;
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.45);
+      margin-top: 4px;
+    }
+
+    /* CTA BOTTOM */
+    .cta-bottom {
+      background: linear-gradient(135deg, #1a1b3a 0%, #0D0D15 100%);
+      border-top: 1px solid rgba(91,95,199,0.2);
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .cta-bottom h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+    .cta-bottom p {
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 36px;
+      font-size: 1rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0a0a10;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: gap;
+      gap: 20px;
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+    .footer-logo span {
+      width: 28px;
+      height: 28px;
+      background: #5B5FC7;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.4);
+      flex-wrap: wrap;
+    }
+    .footer-links a { color: rgba(255,255,255,0.4); }
+    .footer-links a:hover { color: #fff; text-decoration: none; }
+    .footer-copy {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.25);
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      footer { flex-direction: column; text-align: center; padding: 32px 20px; }
+      .preview .phone-wrap:not(.center) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <span>🌱</span> Flowa
+  </a>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="mailto:support@flowahabit.com">Support</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">🌱 Now available on Android</div>
+  <h1>Build habits that<br><span>actually stick.</span></h1>
+  <p>Track your daily habits, stay focused with a built-in Pomodoro timer, and get personalized coaching powered by AI.</p>
+  <div class="cta-row">
+    <a class="btn-primary" href="https://play.google.com/store/apps/details?id=com.flowahabit.app">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M3.18 23.76a2 2 0 0 0 2.08-.22l12.3-7.1-2.88-2.88-11.5 10.2zM20.54 9.44l-2.68-1.55-3.18 3.18 3.18 3.18 2.7-1.56a2 2 0 0 0 0-3.25zM3.18.24L14.72 10.5 11.84 13.4 1.26.46A2 2 0 0 1 3.18.24zM5.26.46l9.46 8.64-3.18 3.18L3.26.68 5.26.46z"/></svg>
+      Get it on Google Play
+    </a>
+  </div>
+</section>
+
+<!-- PHONE PREVIEW -->
+<div class="preview">
+  <div class="phone-wrap">
+    <div class="phone-screen-placeholder">screenshot</div>
+  </div>
+  <div class="phone-wrap center">
+    <div class="phone-screen-placeholder">screenshot</div>
+  </div>
+  <div class="phone-wrap">
+    <div class="phone-screen-placeholder">screenshot</div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="section-label">Everything you need</div>
+  <div class="section-title">One app for your best self</div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🔥</div>
+      <h3>Streaks & Motivation</h3>
+      <p>Build momentum with daily streaks. Never break the chain and watch your consistency grow week by week.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎯</div>
+      <h3>Focus Mode</h3>
+      <p>Built-in Pomodoro timer with ambient sounds. Stay in the zone with rain, ocean, forest, and more.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🤖</div>
+      <h3>AI Coaching</h3>
+      <p>Get personalized habit suggestions based on your goals. Your AI coach helps you pick the right habits and stay on track.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3>Detailed Stats</h3>
+      <p>Weekly and monthly charts, completion rates, and calendar heatmaps give you a clear picture of your progress.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔔</div>
+      <h3>Smart Reminders</h3>
+      <p>Set custom reminders for each habit so you never miss a day. Notifications that work for your schedule.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌙</div>
+      <h3>Beautiful Dark UI</h3>
+      <p>Designed for comfort. A clean, distraction-free interface that looks great day or night.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BOTTOM -->
+<section class="cta-bottom">
+  <h2>Start your streak today.</h2>
+  <p>Free to download. No account required to get started.</p>
+  <a class="btn-primary" href="https://play.google.com/store/apps/details?id=com.flowahabit.app">
+    Download Free on Google Play
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <span>🌱</span> Flowa
+  </div>
+  <div class="footer-links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Use</a>
+    <a href="delete-account.html">Delete Account</a>
+    <a href="mailto:support@flowahabit.com">support@flowahabit.com</a>
+  </div>
+  <div class="footer-copy">© 2025 Flowa. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
