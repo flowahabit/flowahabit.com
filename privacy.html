@@ -56,6 +56,14 @@
     }
     strong { color: #222; }
     a { color: #5B5FC7; }
+    code {
+      font-family: 'SF Mono', Menlo, Consolas, monospace;
+      font-size: 0.82rem;
+      background: #f0f0f0;
+      padding: 1px 5px;
+      border-radius: 4px;
+      word-break: break-all;
+    }
     .contact-box {
       display: flex;
       align-items: center;
@@ -90,7 +98,7 @@
 <main>
 
   <section>
-    <h2>Last Updated: April 2026</h2>
+    <h2>Last Updated: June 2026</h2>
     <p>This Privacy Policy explains how Flowa ("we", "our", or "us") collects, uses, and protects your information when you use the Flowa habit tracking app ("App"). Flowa is currently developed and operated by an independent developer. In the future, the App may be transferred to or operated under a registered company or holding entity. This policy will remain in effect under any such transition, and we will update the effective entity name accordingly. By using the App, you agree to the practices described in this policy.</p>
   </section>
 
@@ -102,11 +110,12 @@
     <p><strong>b) Google Account &amp; Drive Backup (Optional)</strong><br>
     You may optionally sign in with your Google account to back up your data to Google Drive. This feature is entirely optional — the App works fully without it. If you choose to use it:</p>
     <ul>
-      <li>We receive your Google account email address and display name solely to show you which account is connected</li>
-      <li>Your backup is stored privately in your own Google Drive and is not visible in Google Drive</li>
-      <li>We do not store your Google account credentials or backup data on our servers at any point</li>
-      <li>Your use of Google Sign-In is subject to Google's Privacy Policy and Terms of Service</li>
-      <li>You can sign out and revoke access at any time from within the App or from your Google Account settings (myaccount.google.com)</li>
+      <li>We request the <code>https://www.googleapis.com/auth/drive.appdata</code> scope. This scope grants access <strong>only</strong> to a hidden, app-private folder in your Drive that no other app can see. We cannot read, list, modify, or delete any of your other Drive files, photos, or documents — the technical scope makes that impossible.</li>
+      <li>We receive your Google account email address and display name solely to show you which account is connected.</li>
+      <li>Your backup is stored privately in your own Google Drive's app data folder and is not visible to you in the standard Google Drive UI.</li>
+      <li>We do not store your Google account credentials or backup data on our servers at any point.</li>
+      <li>Your use of Google Sign-In is subject to Google's Privacy Policy and Terms of Service.</li>
+      <li>You can sign out and revoke access at any time from within the App or from your Google Account settings (myaccount.google.com).</li>
     </ul>
     <p>In a future release, signing in with Google will also enable automatic data restore — so your habits and progress will be available on any new device simply by signing in.</p>
 
