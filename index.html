@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flowa — Build Habits That Stick</title>
   <meta name="description" content="Flowa helps you build lasting habits with streaks, a focus timer, and AI coaching. Available on Android.">
+
+  <!-- Favicons (uses your existing icon files at site root) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="flowa_32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="flowa_48.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="flowa_icon96.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="flowa_icon256.png">
+  <link rel="apple-touch-icon" sizes="256x256" href="flowa_icon256.png">
+  <meta name="theme-color" content="#5B5FC7">
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -40,15 +49,11 @@
       color: #fff;
       text-decoration: none;
     }
-    .nav-logo span {
+    .nav-logo img {
       width: 36px;
       height: 36px;
-      background: #5B5FC7;
       border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
+      display: block;
     }
     .nav-links {
       display: flex;
@@ -66,16 +71,24 @@
       margin: 0 auto;
     }
     .hero-badge {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       background: rgba(91,95,199,0.18);
       border: 1px solid rgba(91,95,199,0.4);
       color: #9B9FE8;
       font-size: 0.8rem;
       font-weight: 600;
-      padding: 6px 16px;
+      padding: 6px 16px 6px 10px;
       border-radius: 20px;
       margin-bottom: 28px;
       letter-spacing: 0.3px;
+    }
+    .hero-badge img {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+      display: block;
     }
     .hero h1 {
       font-size: clamp(2.4rem, 5vw, 3.6rem);
@@ -229,15 +242,11 @@
       font-weight: 700;
       font-size: 1rem;
     }
-    .footer-logo span {
+    .footer-logo img {
       width: 28px;
       height: 28px;
-      background: #5B5FC7;
       border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
+      display: block;
     }
     .footer-links {
       display: flex;
@@ -266,7 +275,7 @@
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">
-    <span>🌱</span> Flowa
+    <img src="flowa_icon256.png" alt="Flowa logo"> Flowa
   </a>
   <div class="nav-links">
     <a href="#features">Features</a>
@@ -278,7 +287,7 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-badge">🌱 Now available on Android</div>
+  <div class="hero-badge"><img src="flowa_icon256.png" alt=""> Now available on Android</div>
   <h1>Build habits that<br><span>actually stick.</span></h1>
   <p>Track your daily habits, stay focused with a built-in Pomodoro timer, and get personalized coaching powered by AI.</p>
   <div class="cta-row">
@@ -352,7 +361,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">
-    <span>🌱</span> Flowa
+    <img src="flowa_icon256.png" alt="Flowa logo"> Flowa
   </div>
   <div class="footer-links">
     <a href="privacy.html">Privacy Policy</a>
@@ -360,7 +369,7 @@
     <a href="delete-account.html">Delete Account</a>
     <a href="mailto:flowahabit@gmail.com">flowahabit@gmail.com</a>
   </div>
-  <div class="footer-copy">© 2025 Flowa. All rights reserved.</div>
+  <div class="footer-copy">© 2026 Flowa. All rights reserved.</div>
 </footer>
 
 </body>
