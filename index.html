@@ -127,29 +127,21 @@
     .preview {
       display: flex;
       justify-content: center;
-      align-items: flex-end;
+      align-items: center;
       padding: 40px 24px 80px;
-      gap: 16px;
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
     }
-    .ss-side {
-      width: 200px;
+    .ss-img {
+      width: 240px;
       border-radius: 28px;
       overflow: hidden;
-      transform: translateY(30px);
-      opacity: 0.8;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
-      flex-shrink: 0;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.55);
       border: 1.5px solid rgba(255,255,255,0.08);
-    }
-    .ss-center {
-      width: 250px;
-      border-radius: 28px;
-      overflow: hidden;
-      box-shadow: 0 40px 100px rgba(0,0,0,0.8), 0 0 0 1.5px rgba(91,95,199,0.4);
       flex-shrink: 0;
-      z-index: 2;
     }
-    .ss-side img, .ss-center img {
+    .ss-img img {
       width: 100%;
       display: block;
     }
@@ -261,8 +253,8 @@
     @media (max-width: 600px) {
       nav { padding: 16px 20px; }
       .nav-links { display: none; }
-      .ss-side { display: none; }
-      .ss-center { width: 80vw; }
+      .preview { gap: 10px; padding: 30px 12px 60px; }
+      .ss-img { width: 30%; max-width: 110px; border-radius: 16px; }
       footer { flex-direction: column; text-align: center; padding: 32px 20px; }
     }
   </style>
@@ -297,13 +289,13 @@
 
 <!-- SCREENSHOT PREVIEW -->
 <div class="preview">
-  <div class="ss-side">
+  <div class="ss-img">
     <img src="screenshots/grid.jpg" alt="Grid Screen">
   </div>
-  <div class="ss-center">
+  <div class="ss-img">
     <img src="screenshots/habits.jpg" alt="Habits Screen">
   </div>
-  <div class="ss-side">
+  <div class="ss-img">
     <img src="screenshots/focus.jpg" alt="Focus Screen">
   </div>
 </div>
